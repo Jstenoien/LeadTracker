@@ -7,7 +7,7 @@ Add-Type -AssemblyName PresentationFramework
 [XML]$form = @"
 <Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        Topmost="True" WindowStyle="None" ResizeMode="NoResize" Background="Black" Title="CallTracker" Height="90" Width="155" AllowsTransparency="True">
+        Topmost="True" WindowStyle="None" ResizeMode="NoResize" Background="Black" Title="Lead Tracker" Height="90" Width="155" AllowsTransparency="True">
     <Window.Clip>
             <RectangleGeometry Rect="0,0,155,90" RadiusX="8" RadiusY="8"/>
     </Window.Clip>
