@@ -5,7 +5,7 @@ Add-Type -AssemblyName PresentationFramework
 
 #WPF XAML
 [XML]$form = @"
-<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Topmost="True" WindowStyle="None" ResizeMode="NoResize" Background="Black" Title="Lead Tracker" Height="90" Width="155" AllowsTransparency="True">
+<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" Topmost="True" WindowStyle="None" ResizeMode="NoResize" Background="Black" Title="Lead Tracker" Height="75" Width="155" AllowsTransparency="True">
 	<Window.Clip>
 		<RectangleGeometry Rect="0,0,155,90" RadiusX="8" RadiusY="8"/>
 	</Window.Clip>
@@ -21,7 +21,7 @@ Add-Type -AssemblyName PresentationFramework
 				<RowDefinition/>
 				<RowDefinition Height="1.75*"/>
 			</Grid.RowDefinitions>
-			<Label Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Content="Shift:"/>
+			<Label Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Padding="0,0,5,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Content="Shift:"/>
 			<TextBox Name="TimeBox" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Row="0" Grid.Column="1"/>
 			<Button Name="LeadBtn" HorizontalContentAlignment="Center" Grid.Row="0" Grid.RowSpan="2" Grid.Column="2">
 				<Button.Resources>
@@ -31,7 +31,7 @@ Add-Type -AssemblyName PresentationFramework
 				</Button.Resources>
 				<TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="Lead Completed"/>
 			</Button>
-			<Label Foreground="White" Margin="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="Leads:"/>
+			<Label Foreground="White" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0" Padding="0,0,5,0" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="Leads:"/>
 			<TextBox Name="LeadBox" VerticalContentAlignment="Center" Padding="5,0,0,0" Grid.Row="1" Grid.Column="1"/>
 			<Label Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Name="StatLabel" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="">
 				<Label.ToolTip>
@@ -124,7 +124,10 @@ $LeadBtn.add_click({
 })
 
 $XBtn.add_click({
-	$window.close()
+    $result=[System.Windows.MessageBox]::Show("Would you like to Exit?","Exit Confirmation","YesNo","Question")
+    if($result -eq "Yes"){
+	    $window.close()
+    }
 })
 
 $window.ShowDialog()
