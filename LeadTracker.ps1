@@ -1,3 +1,6 @@
+add-type -name win -member '[DllImport("user32.dll")] public static extern bool ShowWindow(int handle, int state);' -namespace native
+[native.win]::ShowWindow(([System.Diagnostics.Process]::GetCurrentProcess() | Get-Process).MainWindowHandle, 0)
+
 Add-Type -AssemblyName PresentationFramework
 
 #WPF XAML
@@ -34,15 +37,15 @@ Add-Type -AssemblyName PresentationFramework
         <TextBox Name="CallBox" VerticalContentAlignment="Center" Padding="5,0,0,0" Grid.Row="1" Grid.Column="1"/>
         <Label Foreground="White" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Name="StatLabel" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Content="">
             <Label.ToolTip>
-                   <ToolTip Name="StatsTT"/>
-            </Label.ToolTip>
+                   <ToolTip Name="StatsTT"/> 
+            </Label.ToolTip> 
         </Label>
         <Button Name="X" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="10" Width="20" Content="X" Foreground="White" Background="Red" Grid.Row="0" Grid.Column="2" FontSize="6">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="0,8,0,4"/>
                 </Style>
-           </Button.Resources>
+            </Button.Resources>
         </Button>
     </Grid>
     </Border>
@@ -59,7 +62,7 @@ function stats($Time,$Leads){
     if($Hours -eq 0 -or $Leads -eq "0"){
         $stats = "0 Leads/Hr"
     } else {
-        #Round
+        #Round 
         $stats = [string]([math]::round((([int]::parse($Leads))/$Hours),2)) + " Leads/Hr"
     }
     return $stats
@@ -101,8 +104,19 @@ $CallBox.Text = 0
 $StatLabel.Content = stats $TimeBox.Text $CallBox.Text
 $StatsTT.Content = TTupdate $TimeBox.Text $CallBox.Text
 
-$CallBtn.add_click({
+$TimeBox.add_KeyUp({
+    if($_.Key -eq "Enter"){
+        $StatLabel.Content = stats $TimeBox.Text $CallBox.Text
+        $StatsTT.Content = TTupdate $TimeBox.Text $CallBox.Text
+    }
+})
 
+$CallBox.add_KeyUp({
+    $StatLabel.Content = stats $TimeBox.Text $CallBox.Text
+    $StatsTT.Content = TTupdate $TimeBox.Text $CallBox.Text
+})
+
+$CallBtn.add_click({
     if($CallBox.Text -eq ""){
         $CallBox.Text = 0
     }
