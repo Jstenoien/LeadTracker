@@ -29,7 +29,7 @@ Add-Type -AssemblyName PresentationFramework
 						<Setter Property="CornerRadius" Value="0,8,0,0"/>
 					</Style>
 				</Button.Resources>
-				<TextBlock TextAlignment="Center" TextWrapping="Wrap">Lead Completed</TextBlock>
+				<TextBlock TextAlignment="Center" TextWrapping="Wrap" Text="Lead Completed"/>
 			</Button>
 			<Label Foreground="White" Margin="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="Leads:"/>
 			<TextBox Name="LeadBox" VerticalContentAlignment="Center" Padding="5,0,0,0" Grid.Row="1" Grid.Column="1"/>
