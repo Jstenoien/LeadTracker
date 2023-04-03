@@ -38,10 +38,10 @@ Add-Type -AssemblyName PresentationFramework
 					<ToolTip Name="StatsTT"/>
 				</Label.ToolTip>
 			</Label>
-			<Button Name="X" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="10" Width="20" Content="X" Foreground="White" Background="Red" Grid.Row="0" Grid.Column="2" FontSize="6">
+			<Button Name="X" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="13" Width="13" Content="X" Foreground="White" Background="Red" Grid.Row="0" Grid.Column="2" FontSize="6">
 				<Button.Resources>
 					<Style TargetType="Border">
-						<Setter Property="CornerRadius" Value="0,8,0,4"/>
+						<Setter Property="CornerRadius" Value="0,8,0,2"/>
 					</Style>
 				</Button.Resources>
 			</Button>
