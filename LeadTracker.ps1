@@ -1,6 +1,8 @@
+#Sets GUI to Always On Top
 add-type -name win -member '[DllImport("user32.dll")] public static extern bool ShowWindow(int handle, int state);' -namespace native
 [native.win]::ShowWindow(([System.Diagnostics.Process]::GetCurrentProcess() | Get-Process).MainWindowHandle, 0)
 
+#Adds WPF Assembly
 Add-Type -AssemblyName PresentationFramework
 
 #WPF XAML
