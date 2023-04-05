@@ -40,7 +40,7 @@ Add-Type -AssemblyName PresentationFramework
 					<ToolTip Name="StatsTT"/>
 				</Label.ToolTip>
 			</Label>
-			<Button Name="X" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="13" Width="13" Content="X" Foreground="White" Background="Red" Grid.Row="0" Grid.Column="2" FontSize="6">
+			<Button Name="Exit" HorizontalAlignment="Right" VerticalAlignment="Top" VerticalContentAlignment="Center" Height="13" Width="13" Content="X" Foreground="White" Background="Red" Grid.Row="0" Grid.Column="2" FontSize="6">
 				<Button.Resources>
 					<Style TargetType="Border">
 						<Setter Property="CornerRadius" Value="0,8,0,2"/>
@@ -95,7 +95,7 @@ $LeadBox = $window.FindName("LeadBox")
 $StatLabel = $window.FindName("StatLabel")
 
 $LeadBtn = $window.FindName("LeadBtn")
-$XBtn = $window.FindName("X")
+$ExitBtn = $window.FindName("Exit")
 
 $StatsTT = $window.FindName("StatsTT")
 
@@ -125,7 +125,7 @@ $LeadBtn.add_click({
 	$StatsTT.Content = TTupdate $TimeBox.Text $LeadBox.Text
 })
 
-$XBtn.add_click({
+$ExitBtn.add_click({
     $result=[System.Windows.MessageBox]::Show("Would you like to Exit?","Exit Confirmation","YesNo","Question")
     if($result -eq "Yes"){
 	    $window.close()
